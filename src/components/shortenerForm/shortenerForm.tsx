@@ -77,22 +77,18 @@ export function ShortenerForm() {
               </button>
             </div>
           </div>
-          {/*
-            <div>
-              <strong>QR-code:</strong>
-              <div style={{ marginTop: "10px" }}>
-                <img src={result.qr_code_base64} alt="QR Code" />
-                <div style={{ marginTop: "10px" }}>
-                  <a
-                    href={result.qr_code_base64}
-                    download={`qr-${result.short_code}.png`}
-                  >
-                    download QR-code
-                  </a>
-                </div>
-              </div>
+          <div className={styles.short_url_second_line}>
+            <strong>QR-code:</strong>
+            <div className={styles.qr_code}>
+              <img src={result.qr_code_base64} alt="QR Code" />
+              <a
+                href={result.qr_code_base64}
+                download={`qr-${result.short_code}.png`}
+              >
+                Download QR-code
+              </a>
             </div>
-          */}
+          </div>
         </div>
       )}
       {error && <p style={{ color: "red" }}>{error}</p>}

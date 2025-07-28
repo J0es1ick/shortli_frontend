@@ -105,7 +105,7 @@
 
 .short_url_first_line {
   margin-top: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -136,4 +136,50 @@
 
 .copy_button {
   margin-right: 24px;
+}
+
+.short_url_second_line {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.short_url_second_line strong {
+  margin-left: 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+.qr_code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.qr_code a {
+  text-decoration: none;
+  font-family: "Inter", serif;
+  font-size: 16px;
+  color: #bcbcbc;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.qr_code a:hover {
+  transition: 0.3s;
+  color: #9f9f9f;
+}
+
+.qr_code img {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #eee;
+  display: block;
 }
