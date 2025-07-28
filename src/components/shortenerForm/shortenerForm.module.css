@@ -1,0 +1,139 @@
+.form {
+  width: 50%;
+  max-width: 90%;
+  height: 60%;
+  max-height: 90%;
+  background-color: white;
+  border-radius: 30px;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form h1 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #333333;
+  font-size: 30px;
+}
+
+.form input {
+  width: 50%;
+  height: 40px;
+  border-radius: 60px;
+  border: 2px solid #ffffff;
+  background-color: #f1f1f1;
+  outline: none;
+  padding: 15px;
+  font-family: "Inter", serif;
+  font-weight: 600;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.form input:focus {
+  border: 2px solid #333333;
+  transition: 0.3s;
+}
+
+.form input::placeholder {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #333333;
+}
+
+.form_button {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  background: #f1f1f1;
+  padding: 11px 18px;
+  border-radius: 3vh;
+  color: #333333;
+  border-style: none;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.form_button:hover {
+  transition: 0.3s;
+  color: #f1f1f1;
+  background-color: #333333;
+  border-style: none;
+}
+
+.short_url {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #333333;
+  width: 70%;
+  max-width: 90%;
+  border-radius: 30px;
+}
+
+.short_url p {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+.short_url p a {
+  text-decoration: none;
+  font-family: "Inter", serif;
+  color: #bcbcbc;
+  transition: 0.3s;
+}
+
+.short_url p a:hover {
+  transition: 0.3s;
+  color: #9f9f9f;
+}
+
+.short_url_first_line {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.short_url_first_line button {
+  background: #f1f1f1;
+  border-radius: 2vh;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 5px 10px;
+}
+
+.short_url_first_line button img {
+  filter: invert(19%) sepia(3%) saturate(37%) hue-rotate(314deg) brightness(99%)
+    contrast(95%);
+  max-width: 24px;
+  max-height: 24px;
+  top: 50%;
+  left: 50%;
+}
+
+.short_link {
+  margin-left: 24px;
+}
+
+.copy_button {
+  margin-right: 24px;
+}
