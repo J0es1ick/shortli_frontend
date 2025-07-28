@@ -121,6 +121,11 @@
   padding: 5px 10px;
 }
 
+.short_url_first_line button:hover {
+  background: #9f9f9f;
+  transition: 0.3s;
+}
+
 .short_url_first_line button img {
   filter: invert(19%) sepia(3%) saturate(37%) hue-rotate(314deg) brightness(99%)
     contrast(95%);
@@ -181,5 +186,6 @@
   width: 150px;
   height: 150px;
   border: 1px solid #eee;
+  border-radius: 20px;
   display: block;
 }
