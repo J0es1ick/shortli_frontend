@@ -1,14 +1,14 @@
-import ShortenerForm from "../../components/shortenerForm/shortenerForm";
 import Footer from "../../components/UI/footer/footer";
 import { Header } from "../../components/UI/header/header";
-import styles from "./home.module.css";
+import URLList from "../../components/urls/urlList";
+import styles from "./stats.module.css";
 
-export default function Home() {
+export default function Stats() {
   return (
     <div>
       <Header />
       <main className={styles.main}>
-        <ShortenerForm />
+        <URLList />
       </main>
       <Footer />
     </div>

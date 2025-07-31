@@ -57,6 +57,11 @@
   margin-right: 40px;
 }
 
+.header_center ul li a {
+  text-decoration: none;
+  color: white;
+}
+
 .header_right {
   margin-right: 40px;
   display: flex;

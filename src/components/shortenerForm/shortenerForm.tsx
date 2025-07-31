@@ -8,7 +8,7 @@ interface ShortenResponse {
   qr_code_base64: string;
 }
 
-export function ShortenerForm() {
+export default function ShortenerForm() {
   const [url, setUrl] = useState("");
   const [result, setResult] = useState<ShortenResponse | null>(null);
   const [error, setError] = useState("");

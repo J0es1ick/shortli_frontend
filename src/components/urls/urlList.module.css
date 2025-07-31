@@ -1,0 +1,58 @@
+.url_list {
+  width: 80%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.url_list_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.url_list_header h1 {
+  font-family: "Inter", serif;
+  font-size: 30px;
+  color: #333333;
+}
+
+.option_names {
+  height: 60px;
+  display: grid;
+  grid-template-columns:
+    8% /* Number */
+    30% /* Original URL */
+    10% /* Short code */
+    8% /* User ID */
+    9% /* Click count */
+    15% /* Created at */
+    20%; /* Кнопки */
+  align-items: center;
+  padding: 0 15px;
+  background-color: #f1f1f1;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom: solid 2px #d4d4d4;
+}
+
+.option_names button {
+  font-family: "Inter", sans-serif;
+  color: black;
+  font-weight: 600;
+  font-size: clamp(14px, 1.5vw, 16px);
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.2s;
+}
+
+.option_names button:hover {
+  background-color: #e2e2e2;
+}

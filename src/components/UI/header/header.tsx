@@ -11,7 +11,9 @@ export function Header() {
       </div>
       <div className={styles.header_center}>
         <ul>
-          <li>Stats</li>
+          <li>
+            <a href="/stats">Stats</a>
+          </li>
           <li>Help</li>
           <li>In Development</li>
         </ul>
