@@ -3,12 +3,14 @@
   max-width: 90%;
   height: 60%;
   max-height: 90%;
-  background-color: white;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 30px var(--box-shadow);
   border-radius: 30px;
   top: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: var(--hd-ft-border);
 }
 
 .form h1 {
@@ -16,7 +18,7 @@
   margin-bottom: 24px;
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  color: #333333;
+  color: var(--text-color);
   font-size: 30px;
 }
 
@@ -24,8 +26,9 @@
   width: 50%;
   height: 40px;
   border-radius: 60px;
-  border: 2px solid #ffffff;
-  background-color: #f1f1f1;
+  border: 2px solid var(--bg-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
   outline: none;
   padding: 15px;
   font-family: "Inter", serif;
@@ -35,7 +38,7 @@
 }
 
 .form input:focus {
-  border: 2px solid #333333;
+  border: 2px solid var(--text-color);
   transition: 0.3s;
 }
 
@@ -45,7 +48,7 @@
   font-size: 18px;
   margin-left: 15px;
   margin-right: 15px;
-  color: #333333;
+  color: var(--text-color);
 }
 
 .form_button {
@@ -54,7 +57,7 @@
   font-weight: 500;
   margin-top: 24px;
   margin-bottom: 24px;
-  background: #f1f1f1;
+  background: var(--button-color);
   padding: 11px 18px;
   border-radius: 3vh;
   color: #333333;
@@ -68,7 +71,7 @@
 
 .form_button:hover {
   transition: 0.3s;
-  color: #f1f1f1;
+  color: var(--button-color);
   background-color: #333333;
   border-style: none;
 }
@@ -78,23 +81,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #333333;
+  background-color: var(--text-color);
   width: 70%;
   max-width: 90%;
   border-radius: 30px;
+  margin-bottom: 24px;
 }
 
 .short_url p {
   font-family: "Inter", sans-serif;
   font-size: 18px;
   font-weight: 500;
-  color: #f1f1f1;
+  color: var(--bg-color);
 }
 
 .short_url p a {
   text-decoration: none;
   font-family: "Inter", serif;
-  color: #bcbcbc;
+  color: #cfcfcf;
   transition: 0.3s;
 }
 
@@ -122,7 +126,7 @@
 }
 
 .short_url_first_line button:hover {
-  background: #9f9f9f;
+  background: #7b7b7b;
   transition: 0.3s;
 }
 
@@ -157,7 +161,7 @@
   font-family: "Inter", sans-serif;
   font-size: 18px;
   font-weight: 500;
-  color: #f1f1f1;
+  color: var(--bg-color);
 }
 
 .qr_code {
@@ -172,14 +176,14 @@
   text-decoration: none;
   font-family: "Inter", serif;
   font-size: 16px;
-  color: #bcbcbc;
+  color: #cfcfcf;
   margin-top: 10px;
   transition: 0.3s;
 }
 
 .qr_code a:hover {
   transition: 0.3s;
-  color: #9f9f9f;
+  color: #7b7b7b;
 }
 
 .qr_code img {

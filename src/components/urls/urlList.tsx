@@ -90,22 +90,24 @@ export default function URLList() {
       <div className={styles.url_list_header}>
         <h1>URLs</h1>
       </div>
-      <div className={styles.option_names}>
-        <button>Number</button>
-        <button>Original URL</button>
-        <button>Short Code</button>
-        <button>User ID</button>
-        <button>Click count</button>
-        <button>Created at</button>
-        <button>Short link</button>
+      <div className={styles.table}>
+        <div className={styles.option_names}>
+          <button>Number</button>
+          <button>Original URL</button>
+          <button>Short Code</button>
+          <button>User ID</button>
+          <button>Click count</button>
+          <button>Created at</button>
+          <button>Short link</button>
+        </div>
+        {urls.map((url, index) => (
+          <URLItem
+            key={url.url_id}
+            number={page === 1 ? index + 1 : index + 1 + 10 * (page - 1)}
+            url={url}
+          />
+        ))}
       </div>
-      {urls.map((url, index) => (
-        <URLItem
-          key={url.url_id}
-          number={page === 1 ? index + 1 : index + 1 + 10 * (page - 1)}
-          url={url}
-        />
-      ))}
       <Pagination
         page={page}
         totalPages={Math.ceil(totalURLs / 10)}

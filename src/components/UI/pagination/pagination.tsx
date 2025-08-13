@@ -3,7 +3,7 @@ import styles from "./pagination.module.css";
 
 interface IProps {
   page: number;
-  totalPages: number; // Теперь передаем totalPages напрямую
+  totalPages: number;
   loading: boolean;
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }

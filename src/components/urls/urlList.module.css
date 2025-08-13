@@ -14,7 +14,13 @@
 .url_list_header h1 {
   font-family: "Inter", serif;
   font-size: 30px;
-  color: #333333;
+  color: var(--text-color);
+}
+
+.table {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 0 30px var(--box-shadow);
 }
 
 .option_names {
@@ -30,15 +36,15 @@
     20%; /* Кнопки */
   align-items: center;
   padding: 0 15px;
-  background-color: #f1f1f1;
+  background-color: var(--bg-color);
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  border-bottom: solid 2px #d4d4d4;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .option_names button {
   font-family: "Inter", sans-serif;
-  color: black;
+  color: var(--text-color);
   font-weight: 600;
   font-size: clamp(14px, 1.5vw, 16px);
   height: 100%;
@@ -54,5 +60,5 @@
 }
 
 .option_names button:hover {
-  background-color: #e2e2e2;
+  background-color: var(--border-color);
 }
