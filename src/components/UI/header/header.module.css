@@ -63,59 +63,37 @@
 }
 
 .header_right {
-  margin-right: 45px;
+  width: 140px;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
 }
 
-.header_right button {
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  background-color: var(--button-color);
-  color: var(--button-text);
-  padding: 11px 18px;
-  border-radius: 3vh;
-  border-style: none;
-  cursor: pointer;
-  transition: 0.3s;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-
-.header_right button:hover {
-  transition: 0.3s;
-  border-radius: 1.4vh;
-  color: var(--button-text-hover);
-  border-style: none;
-}
-
-.header_right img {
+.brightness {
   filter: var(--image-filter);
+  margin-right: 20px;
   max-width: 30px;
   max-height: 30px;
-  margin-right: 10px;
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.header_right img:hover {
-  transform: rotate(90deg);
+.brightness:hover {
+  transform: rotate(180deg);
 }
 
 .theme_menu {
   position: absolute;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  right: 80px;
-  top: 94px;
+  right: 10px;
+  top: 90px;
   background: var(--header-bg);
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  min-width: 120px;
+  min-width: 80px;
 }
 
 .theme_menu button {
@@ -127,12 +105,16 @@
   border-radius: 30px;
   text-align: left;
   font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 .theme_menu button:hover {
   background: var(--button-hover);
   color: #333333;
   border-radius: 10px;
+  transition: 0.3s;
 }
 
 .theme_menu button.active {

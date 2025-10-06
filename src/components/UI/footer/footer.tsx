@@ -5,7 +5,9 @@ export default function Footer() {
     <footer className={style.footer}>
       <div className={style.footer_text}>
         <ul className={style.footer_ul}>
-          <li>Contacts</li>
+          <li>
+            <a href="https://t.me/Joes1ick">Contacts</a>
+          </li>
           <li>About</li>
         </ul>
         <p className={style.footer_mark}>

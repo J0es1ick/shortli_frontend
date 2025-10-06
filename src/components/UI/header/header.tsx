@@ -1,10 +1,8 @@
 import styles from "./header.module.css";
 import { useTheme } from "../../../context/ThemeContext.tsx";
-import { useState } from "react";
 
 export function Header() {
-  const { theme, toggleTheme } = useTheme();
-  const [showThemeMenu, setShowThemeMenu] = useState(false);
+  const { toggleTheme } = useTheme();
 
   return (
     <header className={styles.header}>
@@ -19,38 +17,15 @@ export function Header() {
           <li>
             <a href="/stats">Stats</a>
           </li>
-          <li>In Development</li>
         </ul>
       </div>
       <div className={styles.header_right}>
         <img
+          className={styles.brightness}
           src="public/brightness.svg"
           alt="brightness"
-          onClick={() => setShowThemeMenu(!showThemeMenu)}
+          onClick={() => toggleTheme()}
         />
-        {showThemeMenu && (
-          <div className={styles.theme_menu}>
-            <button
-              onClick={() => {
-                toggleTheme();
-                setShowThemeMenu(false);
-              }}
-              className={theme === "light" ? styles.active : ""}
-            >
-              Light
-            </button>
-            <button
-              onClick={() => {
-                toggleTheme();
-                setShowThemeMenu(false);
-              }}
-              className={theme === "dark" ? styles.active : ""}
-            >
-              Dark
-            </button>
-          </div>
-        )}
-        <button>Sign In</button>
       </div>
     </header>
   );

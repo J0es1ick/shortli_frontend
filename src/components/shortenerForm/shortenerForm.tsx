@@ -48,24 +48,19 @@ export default function ShortenerForm() {
       </button>
       {result && (
         <div className={styles.short_url}>
-          <div className={styles.short_url_first_line}>
+          <div className={styles.short_url_left_side}>
             <div className={styles.short_link}>
-              <p>
-                Short link:{" "}
-                <a
-                  href={`http://localhost:8088/${result.short_url
-                    .split("/")
-                    .pop()}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {`${window.location.host}/${result.short_url
-                    .split("/")
-                    .pop()}`}
-                </a>
-              </p>
+              <a
+                href={`http://localhost:8088/${result.short_url
+                  .split("/")
+                  .pop()}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {`${window.location.host}/${result.short_url.split("/").pop()}`}
+              </a>
             </div>
-            <div className={styles.copy_button}>
+            <div className={styles.buttons}>
               <button
                 onClick={() =>
                   navigator.clipboard.writeText(
@@ -73,20 +68,22 @@ export default function ShortenerForm() {
                   )
                 }
               >
-                <img src="public/copy.svg" alt="copy" />
+                Copy <text>ctrl+c</text>
               </button>
+              <button>Share</button>
             </div>
           </div>
-          <div className={styles.short_url_second_line}>
-            <strong>QR-code:</strong>
+          <div className={styles.short_url_right_side}>
             <div className={styles.qr_code}>
               <img src={result.qr_code_base64} alt="QR Code" />
+              {/*
               <a
                 href={result.qr_code_base64}
                 download={`qr-${result.short_code}.png`}
               >
                 Download QR-code
               </a>
+              */}
             </div>
           </div>
         </div>

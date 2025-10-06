@@ -33,6 +33,13 @@
   list-style: none;
 }
 
+.footer_ul li a {
+  font-family: "Inter", serif;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--header-text);
+}
+
 .footer_ul li:not(:last-of-type) {
   margin-bottom: 16px;
 }

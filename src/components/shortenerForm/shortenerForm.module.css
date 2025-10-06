@@ -78,7 +78,7 @@
 
 .short_url {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: var(--text-color);
@@ -88,80 +88,70 @@
   margin-bottom: 24px;
 }
 
-.short_url p {
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--bg-color);
+.short_url_left_side {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 24px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
 }
 
-.short_url p a {
+.short_url_left_side a {
   text-decoration: none;
   font-family: "Inter", serif;
-  color: #cfcfcf;
+  font-size: 20px;
+  color: #f1f1f1;
   transition: 0.3s;
 }
 
-.short_url p a:hover {
+.short_url_left_side a:hover {
   transition: 0.3s;
   color: #7b7b7b;
 }
 
-.short_url_first_line {
-  margin-top: 24px;
-  margin-bottom: 12px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.short_url_first_line button {
+.short_url_left_side button {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   background: #f1f1f1;
-  border-radius: 2vh;
+  border-radius: 15px;
   border-style: none;
   cursor: pointer;
   transition: 0.3s;
-  padding: 5px 10px;
+  padding: 10px 16px;
+  margin-right: 10px;
 }
 
-.short_url_first_line button:hover {
-  background: #7b7b7b;
+.short_url_left_side button:hover {
+  background: #8c8c8c;
   transition: 0.3s;
 }
 
-.short_url_first_line button img {
-  filter: invert(19%) sepia(3%) saturate(37%) hue-rotate(314deg) brightness(99%)
-    contrast(95%);
-  max-width: 24px;
-  max-height: 24px;
-  top: 50%;
-  left: 50%;
+.short_url_left_side button text {
+  color: #a0a0a0;
 }
 
 .short_link {
-  margin-left: 24px;
+  margin-bottom: 36px;
 }
 
-.copy_button {
-  margin-right: 24px;
+.buttons {
+  margin-top: 36px;
 }
 
-.short_url_second_line {
+.short_url_right_side {
   margin-top: 12px;
-  margin-bottom: 24px;
-  width: 100%;
+  margin-bottom: 12px;
+  width: 50%;
+  height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: end;
   justify-content: space-between;
-}
-
-.short_url_second_line strong {
-  margin-left: 24px;
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--bg-color);
 }
 
 .qr_code {
