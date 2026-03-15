@@ -12,7 +12,7 @@ export default function URLItem({ number, url }: IProps) {
       <h1>{number}</h1>
       <h1>{url.original_url}</h1>
       <h1>{url.short_code}</h1>
-      <h1>{String(url.user_id) === "undefined" ? "Guest" : url.user_id}</h1>
+      <h1>{String(url.user_id) === "null" ? "Guest" : url.user_id}</h1>
       <h1>{String(url.click_count) === "undefined" ? "0" : url.click_count}</h1>
       <h1>{new Date(url.created_at).toLocaleString()}</h1>
       <a
@@ -22,6 +22,9 @@ export default function URLItem({ number, url }: IProps) {
       >
         {`${window.location.host}/${url.short_code.split("/").pop()}`}
       </a>
+      <button>
+        <img src="public/delete.svg" alt="delete" />
+      </button>
     </div>
   );
 }

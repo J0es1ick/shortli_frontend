@@ -92,7 +92,7 @@
   margin-top: 12px;
   margin-bottom: 12px;
   margin-left: 24px;
-  width: 50%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@
   justify-content: space-between;
 }
 
-.short_url_left_side a {
+.slink {
   text-decoration: none;
   font-family: "Inter", serif;
   font-size: 20px;
@@ -108,7 +108,7 @@
   transition: 0.3s;
 }
 
-.short_url_left_side a:hover {
+.slink:hover {
   transition: 0.3s;
   color: #7b7b7b;
 }
@@ -143,10 +143,23 @@
   margin-top: 36px;
 }
 
+.buttons a {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #f1f1f1;
+}
+
+.buttons a:hover {
+  transition: 0.3s;
+  color: #7b7b7b;
+}
+
 .short_url_right_side {
   margin-top: 12px;
   margin-bottom: 12px;
-  width: 50%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;

@@ -64,22 +64,163 @@
 
 .header_right {
   width: 140px;
+  margin-right: 20px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
 }
 
-.brightness {
-  filter: var(--image-filter);
+.theme_toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
   margin-right: 20px;
-  max-width: 30px;
-  max-height: 30px;
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
-.brightness:hover {
-  transform: rotate(180deg);
+.sun,
+.moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  filter: var(--image-filter);
+}
+
+.sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.moon {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0);
+}
+
+.theme_toggle.dark .sun {
+  animation: sunSet 0.5s ease-in-out forwards;
+}
+
+.theme_toggle.dark .moon {
+  animation: moonRise 0.5s ease-in-out 0.3s forwards;
+}
+
+.theme_toggle:not(.dark) .sun {
+  animation: sunRise 0.5s ease-in-out forwards;
+}
+
+.theme_toggle:not(.dark) .moon {
+  animation: moonSet 0.5s ease-in-out forwards;
+}
+
+@keyframes sunSet {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(360deg) scale(0);
+  }
+}
+
+@keyframes moonRise {
+  0% {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotate(-90deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes sunRise {
+  0% {
+    opacity: 0;
+    transform: rotate(360deg) scale(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes moonSet {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotate(90deg) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+  }
+}
+
+.sign_in_button {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  padding: 11px 18px;
+  border-radius: 30px;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.sign_in_button:hover {
+  transition: 0.3s;
+  border-radius: 10px;
+  background-color: #272727;
+  color: var(--button-color);
+  border-style: none;
+}
+
+.logout_button {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  padding: 11px 18px;
+  border-radius: 30px;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.logout_button:hover {
+  transition: 0.3s;
+  border-radius: 10px;
+  background-color: #272727;
+  color: var(--button-color);
+  border-style: none;
 }
 
 .theme_menu {

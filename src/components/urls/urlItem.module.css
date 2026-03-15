@@ -10,7 +10,8 @@
     8% /* User ID */
     9% /* Click count */
     15% /* Created at */
-    20%; /* Buttons */
+    15% /* Short link */
+    5%; /* Buttons */
   align-items: center;
 }
 
@@ -40,4 +41,24 @@
 .url_item a:hover {
   transition: 0.3s;
   color: #7b7b7b;
+}
+
+.url_item button {
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 15px;
+  height: 40px;
+  width: 60%;
+  margin-left: 15px;
+  transition: all 0.2s ease;
+}
+
+.url_item button:hover {
+  background-color: var(--button-hover);
+  cursor: pointer;
+}
+
+.url_item button img {
+  width: 20px;
+  height: 20px;
 }

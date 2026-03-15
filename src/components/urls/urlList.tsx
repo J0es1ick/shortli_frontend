@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import URLItem from "./urlItem";
 import styles from "./urlList.module.css";
 import Pagination from "../UI/pagination/pagination";
@@ -7,7 +7,7 @@ export interface URL {
   url_id: number;
   original_url: string;
   short_code: string;
-  user_id: number;
+  user_id: number | null;
   click_count: number;
   created_at: Date;
 }
@@ -19,16 +19,42 @@ export interface URLResponse {
     page: number;
     limit: number;
     totalPages: number;
+    query?: string;
   };
 }
 
+const BASE_URL = "http://localhost:8088";
+
 const getURLs = async (
   page: number = 1,
-  limit: number = 10
+  limit: number = 10,
+  query: string = "",
 ): Promise<{ data: URL[]; total: number }> => {
   try {
-    const response = await fetch(`api/stats?page=${page}&limit=${limit}`);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    let url: string;
+
+    if (query.trim()) {
+      url = `${BASE_URL}/api/admin/search?q=${encodeURIComponent(
+        query,
+      )}&page=${page}&limit=${limit}`;
+    } else {
+      url = `${BASE_URL}/api/admin/urls?page=${page}&limit=${limit}`;
+    }
+
+    const response = await fetch(url, {
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error("Authentication required");
+      }
+      if (response.status === 403) {
+        throw new Error("Admin access required");
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const result: URLResponse = await response.json();
 
     return {
@@ -42,18 +68,20 @@ const getURLs = async (
 };
 
 export default function URLList() {
-  const [urls, setURLs] = React.useState<URL[]>([]);
-  const [page, setPage] = React.useState(1);
-  const [totalURLs, setTotalURLs] = React.useState(0);
-  const [loading, setLoading] = React.useState(true);
-  const [, setError] = React.useState<string | null>(null);
+  const [urls, setURLs] = useState<URL[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalURLs, setTotalURLs] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const limit: number = 10;
 
-  const fetchURLs = async () => {
+  const fetchURLs = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const { data, total } = await getURLs(page);
+      const { data, total } = await getURLs(page, limit, searchQuery);
       setURLs(data);
       setTotalURLs(total);
     } catch (err) {
@@ -61,9 +89,18 @@ export default function URLList() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, searchQuery]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(searchInput);
+      setPage(1);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchInput]);
+
+  useEffect(() => {
     let isMounted = true;
 
     const loadURLs = async () => {
@@ -77,19 +114,56 @@ export default function URLList() {
     return () => {
       isMounted = false;
     };
-  }, [page]);
+  }, [fetchURLs]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (page > 1 && Math.ceil(totalURLs / limit) < page) {
       setPage(1);
     }
-  }, [totalURLs]);
+  }, [totalURLs, page]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchQuery(searchInput);
+    setPage(1);
+  };
+
+  const handleClearSearch = () => {
+    setSearchInput("");
+    setSearchQuery("");
+    setPage(1);
+  };
 
   return (
     <div className={styles.url_list}>
       <div className={styles.url_list_header}>
-        <h1>URLs</h1>
+        <h1>URL Management</h1>
+
+        <form onSubmit={handleSearchSubmit} className={styles.search_form}>
+          <div className={styles.search_container}>
+            <input
+              type="text"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Search by URL or short code..."
+              className={styles.search_input}
+            />
+            {searchInput && (
+              <button
+                type="button"
+                onClick={handleClearSearch}
+                className={styles.clear_button}
+                title="Clear search"
+              >
+                ×
+              </button>
+            )}
+          </div>
+        </form>
       </div>
+
+      {error && <div className={styles.error}>{error}</div>}
+
       <div className={styles.table}>
         <div className={styles.option_names}>
           <button>Number</button>
@@ -98,22 +172,36 @@ export default function URLList() {
           <button>User ID</button>
           <button>Click count</button>
           <button>Created at</button>
-          <button>Short link</button>
+          <button>Link</button>
         </div>
-        {urls.map((url, index) => (
-          <URLItem
-            key={url.url_id}
-            number={page === 1 ? index + 1 : index + 1 + 10 * (page - 1)}
-            url={url}
-          />
-        ))}
+
+        {loading ? (
+          <div className={styles.loading}>Loading URLs...</div>
+        ) : urls.length === 0 ? (
+          <div className={styles.no_results}>
+            {searchQuery
+              ? "No URLs found matching your search."
+              : "No URLs found."}
+          </div>
+        ) : (
+          urls.map((url, index) => (
+            <URLItem
+              key={url.url_id}
+              number={page === 1 ? index + 1 : index + 1 + limit * (page - 1)}
+              url={url}
+            />
+          ))
+        )}
       </div>
-      <Pagination
-        page={page}
-        totalPages={Math.ceil(totalURLs / 10)}
-        loading={loading}
-        setPage={setPage}
-      />
+
+      {!loading && urls.length > 0 && (
+        <Pagination
+          page={page}
+          totalPages={Math.ceil(totalURLs / limit)}
+          loading={loading}
+          setPage={setPage}
+        />
+      )}
     </div>
   );
 }
